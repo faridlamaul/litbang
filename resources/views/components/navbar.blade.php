@@ -23,16 +23,29 @@
                 </div>
             </div>
             <div class="absolute inset-y-0 right-0 flex space-x-4 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                <a href="{{ url('login') }}">
-                    <button class="{{ Request::is('login') ? 'bg-gray-900' : '' }} text-gray-300 hover:bg-gray-700 hover:text-white px-4 py-2 rounded-md text-sm font-medium">
-                        <p>Login</p>
-                    </button>
-                </a>
-                <a href="{{ url('register') }}"">
-                    <button class=" {{ Request::is('register') ? 'bg-gray-900' : '' }} text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                    <p>Register</p>
-                    </button>
-                </a>
+                @guest
+                    <a href="{{ url('login') }}">
+                        <button class="{{ Request::is('login') ? 'bg-gray-900' : '' }} text-gray-300 hover:bg-gray-700 hover:text-white px-4 py-2 rounded-md text-sm font-medium">
+                            <p>Login</p>
+                        </button>
+                    </a>
+                    <a href="{{ url('register') }}">
+                        <button class=" {{ Request::is('register') ? 'bg-gray-900' : '' }} text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                        <p>Register</p>
+                        </button>
+                    </a>
+                @endguest
+
+                @auth
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a>
+                            <button class=" {{ Request::is('logout') ? 'bg-gray-900' : '' }} text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                            <p>Logout</p>
+                            </button>
+                        </a>
+                    </form>
+                @endauth
                 {{-- <button type="button" class="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                     <span class="sr-only">View notifications</span>
                     <!-- Heroicon name: outline/bell -->
