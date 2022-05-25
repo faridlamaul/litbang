@@ -22,6 +22,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 
+
 // ---------------Admin------------------//
 
 Route::get('/admin', function () {
@@ -37,7 +38,7 @@ Route::get('/daftar-permohonan', function () {
 });
 
 Route::get('/detail-permohonan', function () {
-    return view('admin.detail-permohonan1');
+    return view('admin.detail-permohonan');
 });
 
 
