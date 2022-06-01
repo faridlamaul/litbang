@@ -6,15 +6,29 @@
             <div class=" flex items-center justify-center sm:justify-start">
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ url('/') }}">
-                        <h2 class="{{ Request::is('/') ? 'bg-gray-900' : '' }} px-3 py-2 rounded-md text-center text-3xl font-extrabold text-white">Litbang-App</h2>
+                        <h2
+                            class="{{ Request::is('/') ? 'bg-gray-900' : '' }} px-3 py-2 rounded-md text-center text-3xl font-extrabold text-white">
+                            Litbang-App</h2>
                     </a>
                 </div>
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                        <a href="{{ url('dashboard') }}" class="{{ Request::is('dashboard') ? 'bg-gray-900' : '' }} text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Dashboard</a>
                         @auth
-                        <a href="{{ url('riwayat') }}" class="{{ Request::is('riwayat') ? 'bg-gray-900' : '' }} text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Riwayat</a>
+                            @if (Auth::user()->hasRole('user'))
+                                {{-- user role --}}
+                                <a href="{{ url('/user/dashboard') }}"
+                                    class="{{ Request::is('dashboard') ? 'bg-gray-900' : '' }} text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    aria-current="page">Dashboard</a>
+                                <a href="{{ url('/user/riwayat') }}"
+                                    class="{{ Request::is('riwayat') ? 'bg-gray-900' : '' }} text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    aria-current="page">Riwayat</a>
+                            @else
+                                {{-- admin role --}}
+                                <a href="{{ url('/admin/dashboard') }}"
+                                    class="{{ Request::is('dashboard') ? 'bg-gray-900' : '' }} text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    aria-current="page">Dashboard</a>
+                            @endif
                         @endauth
 
                         {{-- <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Team</a>
@@ -25,29 +39,33 @@
                     </div>
                 </div>
             </div>
-            <div class="absolute inset-y-0 right-0 flex space-x-4 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <div
+                class="absolute inset-y-0 right-0 flex space-x-4 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 @guest
-                <a href="{{ url('login') }}">
-                    <button class="{{ Request::is('login') ? 'bg-gray-900' : '' }} text-gray-300 hover:bg-gray-700 hover:text-white px-4 py-2 rounded-md text-sm font-medium">
-                        <p>Login</p>
-                    </button>
-                </a>
-                <a href="{{ url('register') }}">
-                    <button class=" {{ Request::is('register') ? 'bg-gray-900' : '' }} text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                        <p>Register</p>
-                    </button>
-                </a>
+                    <a href="{{ url('login') }}">
+                        <button
+                            class="{{ Request::is('login') ? 'bg-gray-900' : '' }} text-gray-300 hover:bg-gray-700 hover:text-white px-4 py-2 rounded-md text-sm font-medium">
+                            <p>Login</p>
+                        </button>
+                    </a>
+                    <a href="{{ url('register') }}">
+                        <button
+                            class=" {{ Request::is('register') ? 'bg-gray-900' : '' }} text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                            <p>Register</p>
+                        </button>
+                    </a>
                 @endguest
 
                 @auth
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <a>
-                        <button class=" {{ Request::is('logout') ? 'bg-gray-900' : '' }} text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                            <p>Logout</p>
-                        </button>
-                    </a>
-                </form>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a>
+                            <button
+                                class=" {{ Request::is('logout') ? 'bg-gray-900' : '' }} text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                <p>Logout</p>
+                            </button>
+                        </a>
+                    </form>
                 @endauth
                 {{-- <button type="button" class="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                     <span class="sr-only">View notifications</span>
@@ -80,13 +98,17 @@
     <div class="sm:hidden" id="mobile-menu">
         <div class="px-2 pt-2 pb-3 space-y-1">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Dashboard</a>
+            <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
+                aria-current="page">Dashboard</a>
 
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Team</a>
+            <a href="#"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Team</a>
 
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+            <a href="#"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
 
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Calendar</a>
+            <a href="#"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Calendar</a>
         </div>
     </div>
 </nav>

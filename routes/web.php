@@ -17,33 +17,35 @@ Route::get('/', function () {
     return view('homepage');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Middleware for user
+Route::group(['middleware' => ['role:user']], function () {
+    Route::get('/user/dashboard', function () {
+        return view('dashboard');
+    });
 
-Route::get('/riwayat', function () {
-    return view('riwayat');
-})->middleware(['auth'])->name('riwayat');
-
-
-
-// ---------------Admin------------------//
-
-Route::get('/admin', function () {
-    return view('admin.dashboard');
+    Route::get('/user/riwayat', function () {
+        return view('riwayat');
+    });
 });
 
-Route::get('/daftar-users', function () {
-    return view('admin.daftar-users');
-});
+// Middleware for admin
+Route::group(['middleware' => ['role:admin']], function () {
 
-Route::get('/daftar-permohonan', function () {
-    return view('admin.daftar-permohonan');
-});
+    Route::get('/admin/dashboard', function () {
+        return view('admin.dashboard');
+    });
 
-Route::get('/detail-permohonan', function () {
-    return view('admin.detail-permohonan');
-});
+    Route::get('/admin/daftar-users', function () {
+        return view('admin.daftar-users');
+    });
 
+    Route::get('/admin/daftar-permohonan', function () {
+        return view('admin.daftar-permohonan');
+    });
+
+    Route::get('/admin/detail-permohonan', function () {
+        return view('admin.detail-permohonan');
+    });
+});
 
 require __DIR__ . '/auth.php';

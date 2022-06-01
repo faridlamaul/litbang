@@ -6,13 +6,17 @@
             <div class=" flex items-center justify-center sm:justify-start">
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ url('/') }}">
-                        <h2 class="{{ Request::is('/') ? 'bg-gray-900' : '' }} py-2 rounded-md text-center text-3xl font-extrabold text-white">Litbang-App</h2>
+                        <h2
+                            class="{{ Request::is('/') ? 'bg-gray-900' : '' }} py-2 rounded-md text-center text-3xl font-extrabold text-white">
+                            Litbang-App</h2>
                     </a>
                 </div>
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                        <a href="{{ url('admin') }}" class="{{ Request::is('admin') ? 'bg-gray-900' : '' }} text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">Dashboard</a>
+                        <a href="{{ url('/admin/dashboard') }}"
+                            class="{{ Request::is('admin') ? 'bg-gray-900' : '' }} text-white px-3 py-2 rounded-md text-sm font-medium"
+                            aria-current="page">Dashboard</a>
 
                         {{-- <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Team</a>
 
@@ -22,7 +26,8 @@
                     </div>
                 </div>
             </div>
-            <div class="absolute inset-y-0 right-0 flex space-x-4 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <div
+                class="absolute inset-y-0 right-0 flex space-x-4 items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 {{-- @guest
                     <a href="{{ url('login') }}">
                 <button class="{{ Request::is('login') ? 'bg-gray-900' : '' }} text-gray-300 hover:bg-gray-700 hover:text-white px-4 py-2 rounded-md text-sm font-medium">
@@ -37,14 +42,15 @@
                 @endguest --}}
 
                 @auth
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <a>
-                        <button class=" {{ Request::is('logout') ? 'bg-gray-900' : '' }} text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                            <p>Logout</p>
-                        </button>
-                    </a>
-                </form>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a>
+                            <button
+                                class=" {{ Request::is('logout') ? 'bg-gray-900' : '' }} text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                <p>Logout</p>
+                            </button>
+                        </a>
+                    </form>
                 @endauth
                 {{-- <button type="button" class="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                     <span class="sr-only">View notifications</span>
