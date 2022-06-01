@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "axios": "^0.26.1",
+        "flowbite": "^1.4.7",
         "tw-elements": "^1.0.0-alpha12"
     }
 }
