@@ -26,6 +26,10 @@ Route::group(['middleware' => ['role:user']], function () {
     Route::get('/user/riwayat', function () {
         return view('riwayat');
     });
+
+    Route::get('/user/proccess', function () {
+        return view('proccess');
+    });
 });
 
 // Middleware for admin
