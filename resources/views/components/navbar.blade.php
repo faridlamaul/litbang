@@ -7,7 +7,7 @@
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ url('/') }}">
                         <h2
-                            class="{{ Request::is('/') ? 'bg-gray-900' : '' }} px-3 py-2 rounded-md text-center text-3xl font-extrabold text-white">
+                            class="{{ Request::is('/') ? 'bg-gray-900' : 'hover:bg-gray-700 hover:text-white' }} px-3 py-2 rounded-md text-center text-3xl font-extrabold text-white">
                             Litbang-App</h2>
                     </a>
                 </div>
@@ -18,15 +18,15 @@
                             @if (Auth::user()->hasRole('user'))
                                 {{-- user role --}}
                                 <a href="{{ url('/user/dashboard') }}"
-                                    class="{{ Request::is('dashboard') ? 'bg-gray-900' : '' }} text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    class="{{ Request::is('user/dashboard') || Request::is('user/proccess') ? 'bg-gray-900' : 'hover:bg-gray-700 hover:text-white' }} text-white px-3 py-2 rounded-md text-sm font-medium"
                                     aria-current="page">Dashboard</a>
                                 <a href="{{ url('/user/riwayat') }}"
-                                    class="{{ Request::is('riwayat') ? 'bg-gray-900' : '' }} text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    class="{{ Request::is('user/riwayat') ? 'bg-gray-900' : 'hover:bg-gray-700 hover:text-white' }} text-white px-3 py-2 rounded-md text-sm font-medium"
                                     aria-current="page">Riwayat</a>
                             @else
                                 {{-- admin role --}}
                                 <a href="{{ url('/admin/dashboard') }}"
-                                    class="{{ Request::is('dashboard') ? 'bg-gray-900' : '' }} text-white px-3 py-2 rounded-md text-sm font-medium"
+                                    class="{{ Request::is('/admin/dashboard') ? 'bg-gray-900' : 'hover:bg-gray-700 hover:text-white' }} text-white px-3 py-2 rounded-md text-sm font-medium"
                                     aria-current="page">Dashboard</a>
                             @endif
                         @endauth
@@ -44,13 +44,13 @@
                 @guest
                     <a href="{{ url('login') }}">
                         <button
-                            class="{{ Request::is('login') ? 'bg-gray-900' : '' }} text-gray-300 hover:bg-gray-700 hover:text-white px-4 py-2 rounded-md text-sm font-medium">
+                            class="{{ Request::is('login') ? 'bg-gray-900' : 'hover:bg-gray-700 hover:text-white' }} text-gray-300 px-4 py-2 rounded-md text-sm font-medium">
                             <p>Login</p>
                         </button>
                     </a>
                     <a href="{{ url('register') }}">
                         <button
-                            class=" {{ Request::is('register') ? 'bg-gray-900' : '' }} text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                            class=" {{ Request::is('register') ? 'bg-gray-900' : 'hover:bg-gray-700 hover:text-white' }} text-gray-300 px-3 py-2 rounded-md text-sm font-medium">
                             <p>Register</p>
                         </button>
                     </a>
@@ -61,7 +61,7 @@
                         @csrf
                         <a>
                             <button
-                                class=" {{ Request::is('logout') ? 'bg-gray-900' : '' }} text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                                class=" {{ Request::is('logout') ? 'bg-gray-900' : 'hover:bg-gray-700 hover:text-white' }} text-gray-300 px-3 py-2 rounded-md text-sm font-medium">
                                 <p>Logout</p>
                             </button>
                         </a>
