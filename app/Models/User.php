@@ -22,6 +22,13 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'alamat',
+        'asal_sekolah',
+        'no_telp',
+        'surat_sekolah',
+        'proposal',
+        'ktp',
+        'surat_instansi',
     ];
 
     /**
@@ -42,4 +49,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function surats()
+    {
+        return $this->belongsToMany(Surat::class, 'permohonans');
+    }
 }
