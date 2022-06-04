@@ -17,9 +17,9 @@ class CreatePermohonansTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('surat_id')->constrained('surats');
-            $table->string('status')->default('belum dikonfirmasi');
-            $table->string('qrcode')->nullable();
-            $table->string('ttd')->nullable();
+            $table->string('status');
+            $table->string('qrcode');
+            $table->string('ttd');
             $table->timestamps();
         });
     }
