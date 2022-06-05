@@ -15,8 +15,8 @@ class Surat extends Model
         'image',
     ];
 
-    public function users()
+    public function riwayats()
     {
-        return $this->belongsToMany(User::class, 'permohonans');
+        return $this->belongsToMany(Riwayat::class, 'permohonans');
     }
 }

@@ -15,8 +15,9 @@ class CreatePermohonansTable extends Migration
     {
         Schema::create('permohonans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('riwayat_id')->constrained('riwayats');
             $table->foreignId('surat_id')->constrained('surats');
+            $table->date('tanggal_permohonan')->nullable();
             $table->string('surat_sekolah')->nullable();
             $table->string('proposal')->nullable();
             $table->string('ktp')->nullable();
@@ -25,7 +26,6 @@ class CreatePermohonansTable extends Migration
             $table->string('keterangan')->nullable()->default('Mohon maaf, surat permohonan yang anda ajukan masih diproses');
             $table->string('qrcode')->nullable();
             $table->string('ttd')->nullable();
-            $table->date('tanggal_permohonan')->nullable();
             $table->timestamps();
         });
     }

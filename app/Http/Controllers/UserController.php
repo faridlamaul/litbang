@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Permohonan;
+use App\Models\Riwayat;
 use App\Models\Surat;
 use App\Models\User;
 use Carbon\Carbon;
-use com_exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use PhpParser\Node\Expr\FuncCall;
 
 class UserController extends Controller
 {
@@ -23,16 +22,11 @@ class UserController extends Controller
     public function riwayat()
     {
         $permohonans = Permohonan::join('surats', 'surats.id', '=', 'permohonans.surat_id')
-            ->where('permohonans.user_id', Auth::user()->id)
-            ->select('permohonans.*', 'surats.title')
+            ->join('riwayats', 'riwayats.id', '=', 'permohonans.riwayat_id')
+            ->select('permohonans.*', 'riwayats.*', 'surats.title')
             ->get();
 
         return view('riwayat', compact('permohonans'));
-    }
-
-    public function proccess()
-    {
-        return view('proccess');
     }
 
     public function permohonanUser(Request $request)
@@ -41,13 +35,13 @@ class UserController extends Controller
             'name' => 'required',
             'alamat' => 'required',
             'asal_sekolah' => 'required',
+            'email' => 'required',
             'no_telp' => 'required',
             'surat_sekolah' => ['required', 'file', 'mimes:pdf', 'max:2048'],
             'proposal' => ['required', 'file', 'mimes:pdf', 'max:2048'],
             'ktp' => ['required', 'image', 'mimes:jpeg,png,jpg,svg', 'max:2048'],
             'surat_instansi' => ['required', 'file', 'mimes:pdf', 'max:2048'],
         ]);
-        // dd($request->all());
 
         $input = $request->all();
 
@@ -79,22 +73,24 @@ class UserController extends Controller
             $input['surat_instansi'] = "$suratInstansiName";
         }
 
-        $user = User::find(Auth::user()->id);
-
-        $user->update([
+        Riwayat::create([
+            'user_id' => Auth::user()->id,
             'name' => $input['name'],
             'alamat' => $input['alamat'],
             'asal_sekolah' => $input['asal_sekolah'],
+            'email' => $input['email'],
             'no_telp' => $input['no_telp'],
         ]);
 
+        $riwayat = Riwayat::where('user_id', Auth::user()->id)->latest()->first();
+
         Permohonan::create([
-            'user_id' => Auth::user()->id,
+            'riwayat_id' => $riwayat->id,
             'surat_id' => $request->id,
+            'tanggal_permohonan' => Carbon::now()->toDateTimeString(),
             'surat_sekolah' => $input['surat_sekolah'],
             'proposal' => $input['proposal'],
             'ktp' => $input['ktp'],
-            'tanggal_permohonan' => Carbon::now()->toDateTimeString(),
             'surat_instansi' => $input['surat_instansi'],
         ]);
 

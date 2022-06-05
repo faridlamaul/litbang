@@ -10,15 +10,15 @@ class Permohonan extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id',
+        'riwayat_id',
         'surat_id',
-        'status',
-        'qrcode',
-        'ttd',
         'tanggal_permohonan',
         'surat_sekolah',
         'proposal',
         'ktp',
         'surat_instansi',
+        'status',
+        'qrcode',
+        'ttd',
     ];
 }

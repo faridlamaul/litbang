@@ -26,11 +26,10 @@ class AdminController extends Controller
 
     public function daftarPermohonan()
     {
-        $permohonans = Permohonan::join('users', 'users.id', '=', 'permohonans.user_id')
+        $permohonans = Permohonan::join('riwayats', 'riwayats.id', '=', 'permohonans.riwayat_id')
             ->join('surats', 'surats.id', '=', 'permohonans.surat_id')
-            ->select('permohonans.*', 'users.name', 'surats.title')
+            ->select('permohonans.*', 'riwayats.*', 'surats.title')
             ->get();
-        // dd($permohonans->toArray());
 
         return view('admin.daftar-permohonan', compact('permohonans'));
     }
@@ -63,8 +62,8 @@ class AdminController extends Controller
 
     public function detailPermohonan(Request $request)
     {
-        $detils = Permohonan::join('users', 'users.id', '=', 'permohonans.user_id')
-            ->select('permohonans.*', 'users.*')
+        $detils = Permohonan::join('riwayats', 'riwayats.id', '=', 'permohonans.riwayat_id')
+            ->select('permohonans.*', 'riwayats.*')
             ->where('permohonans.id', $request->id)
             ->get();
 
