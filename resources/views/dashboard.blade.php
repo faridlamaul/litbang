@@ -1,20 +1,22 @@
 @extends('layout')
 
 @section('content')
+<div class="bg-gray-100 pb-20">
+
     <div class="container mx-auto py-16">
         <div class="flex flex-row flex-wrap space-x-4 w-full justify-center">
             @foreach ($surats as $surat)
-                <div class="w-1/4">
+                <div class="rounded-lg shadow-xl bg-blue-50  w-1/5 mx-10">
                     <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light" data-bs-toggle="modal"
                         data-bs-target="#suratPerizinanModal-{{ $surat->id }}">
-                        <div class="rounded-lg shadow-xl bg-blue-50 max-w-sm">
+                        <div class="max-w-xs">
                             <div class="rounded-t-lg text-center pt-8">
-                                <i class="fa-solid fa-file-import fa-8x text-blue-800"></i>
+                                <i class="fa-solid fa-file-import fa-8x text-blue-900"></i>
                             </div>
                             {{-- <img class="rounded-t-lg" src="https://mdbootstrap.com/img/new/standard/nature/182.jpg" alt="" /> --}}
-                            <div class="p-6">
+                            <div class="p-6 pb-24">
                                 <h5 class="text-gray-900 text-2xl font-medium text-center mb-5">{{ $surat->title }}</h5>
-                                <p class="text-gray-700 text-base mb-4">
+                                <p class="text-gray-700 text-base mb-4 min-h-20 max-h-24 overflow-hidden">
                                     {{ $surat->description }}
                                 </p>
                                 {{-- <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button> --}}
@@ -75,7 +77,7 @@
                                     <div class="mb-3 xl:w-96">
                                         <label for="exampleFormControlInput1"
                                             class="form-label inline-block mb-2 text-gray-700">Email</label>
-                                        <input type="email" name="email" value="{{ Auth::user()->email }}"
+                                        <input disabled type="email" name="email" value="{{ Auth::user()->email }}"
                                             class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                             placeholder="Email" />
                                     </div>
@@ -161,4 +163,5 @@
 
 
     </div>
+</div>
 @endsection

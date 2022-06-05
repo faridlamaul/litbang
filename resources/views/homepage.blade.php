@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    <div class="bg-gray-100">
+    <div class="bg-gray-100 pb-20">
         <div class="container mx-auto flex flex-col items-center py-12 sm:py-24">
             <div class="w-11/12 sm:w-2/3 lg:flex justify-center items-center flex-col  mb-5 sm:mb-10">
                 <h1
@@ -47,7 +47,7 @@
         </div>
         <section id="works">
             @guest
-                <div class="max-w-8xl mx-auto container bg-white dark:bg-gray-900 pt-16 mt- mb-4">
+                <div class="max-w-8xl mx-auto container bg-white dark:bg-gray-900 pt-16 rounded-md shadow-md">
                     <div role="contentinfo" class="flex items-center flex-col px-4">
                         {{-- <p tabindex="0" class="focus:outline-none uppercase text-sm text-center text-gray-600 dark:text-gray-200 leading-4">in few easy steps</p> --}}
                         <h1 tabindex="0"
@@ -136,7 +136,7 @@
             @endguest
             @auth
                 @if (Auth::user()->hasRole('user'))
-                    <div class="max-w-8xl mx-auto container bg-white dark:bg-gray-900 pt-16 mt- mb-4">
+                    <div class="max-w-8xl mx-auto container bg-white dark:bg-gray-900 pt-16 rounded-md shadow-md">
                         <div role="contentinfo" class="flex items-center flex-col px-4">
                             {{-- <p tabindex="0" class="focus:outline-none uppercase text-sm text-center text-gray-600 dark:text-gray-200 leading-4">in few easy steps</p> --}}
                             <h1 tabindex="0"

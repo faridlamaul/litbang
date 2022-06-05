@@ -5,7 +5,7 @@
             </div>
             <div class=" flex items-center justify-center sm:justify-start">
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ url('/') }}">
+                    <a href="{{ url('/admin/dashboard') }}">
                         <h2
                             class="{{ Request::is('/') ? 'bg-gray-900' : 'hover:bg-gray-700 hover:text-white' }} py-2 rounded-md text-center text-3xl font-extrabold text-white">
                             Litbang-App</h2>

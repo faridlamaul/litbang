@@ -55,19 +55,19 @@
                                     <td class="py-2 border border-gray-200 text-center">
                                         <a href="{{ url('/admin/detail-permohonan/' . $permohonan->id) }}">
                                             <button
-                                                class="text-white text-sm focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-purple-700 bg-purple-700 transition duration-150 ease-in-out hover:bg-purple-600 rounded-md border-purple-700 px-2 py-2">
+                                                class="text-white text-sm focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-purple-700 bg-purple-700 transition duration-150 ease-in-out hover:bg-purple-600 rounded-md border-purple-700 px-2 py-1">
                                                 Detail
                                             </button>
                                         </a>
                                         <button
-                                            class="text-white text-sm focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-blue-700 bg-blue-700 transition duration-150 ease-in-out hover:bg-blue-600 rounded-md border-blue-700 px-2 py-2 mx-2"
+                                            class="text-white text-sm focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-blue-700 bg-blue-700 transition duration-150 ease-in-out hover:bg-blue-600 rounded-md border-blue-700 px-2 py-1 mx-2"
                                             data-bs-toggle="modal"
                                             data-bs-target="#konfirmasi-terima-{{ $permohonan->id }}">
                                             Terima
                                         </button>
 
                                         <button
-                                            class="text-white text-sm focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-red-700 bg-red-700 transition duration-150 ease-in-out hover:bg-red-600 rounded-md border-red-700 px-2 py-2 "
+                                            class="text-white text-sm focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-red-700 bg-red-700 transition duration-150 ease-in-out hover:bg-red-600 rounded-md border-red-700 px-2 py-1 "
                                             data-bs-toggle="modal"
                                             data-bs-target="#konfirmasi-tolak-{{ $permohonan->id }}">
                                             Tolak

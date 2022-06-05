@@ -61,10 +61,11 @@ class AdminController extends Controller
     }
 
 
-    public function detailPermohonan()
+    public function detailPermohonan(Request $request)
     {
         $detils = Permohonan::join('users', 'users.id', '=', 'permohonans.user_id')
             ->select('permohonans.*', 'users.*')
+            ->where('permohonans.id', $request->id)
             ->get();
 
         return view('admin.detail-permohonan', compact('detils'));

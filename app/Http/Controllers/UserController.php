@@ -39,7 +39,6 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
             'alamat' => 'required',
             'asal_sekolah' => 'required',
             'no_telp' => 'required',
@@ -84,7 +83,6 @@ class UserController extends Controller
 
         $user->update([
             'name' => $input['name'],
-            'email' => $input['email'],
             'alamat' => $input['alamat'],
             'asal_sekolah' => $input['asal_sekolah'],
             'no_telp' => $input['no_telp'],

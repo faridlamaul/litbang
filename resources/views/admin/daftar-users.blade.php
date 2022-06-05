@@ -41,7 +41,7 @@
                                     <td class="py-2 border border-gray-200 text-center">
                                         {{-- <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light" data-bs-toggle="modal" data-bs-target="#alertHapus"> --}}
                                         <button
-                                            class="text-white focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-red-700 bg-red-700 transition duration-150 ease-in-out hover:bg-red-600 rounded-lg border-red-700 px-3 py-1"
+                                            class="text-white text-sm focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-red-700 bg-red-700 transition duration-150 ease-in-out hover:bg-red-600 rounded-lg border-red-700 px-3 py-1"
                                             data-bs-toggle="modal" data-bs-target="#hapusUser{{ $user->id }}">
                                             Hapus
                                         </button>

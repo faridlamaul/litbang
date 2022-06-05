@@ -15,7 +15,7 @@
                     <div class="border-solid border-2 border-indigo-600 p-2 ml-3 rounded-full">
                         <i class="fa-solid fa-file-lines fa-xl text-gray-800"></i>
                     </div>
-                    <h4 class="text-2xl pl-3 py-4 text-gray-800 font-medium">Daftar Surat Permohonan</h4>
+                    <h4 class="text-2xl pl-3 py-4 text-gray-800 font-medium">Detail Surat Permohonan</h4>
                 </div>
                 <div>
                     <div class=" px-7 py-3">
