@@ -25,10 +25,6 @@ class User extends Authenticatable
         'alamat',
         'asal_sekolah',
         'no_telp',
-        'surat_sekolah',
-        'proposal',
-        'ktp',
-        'surat_instansi',
     ];
 
     /**

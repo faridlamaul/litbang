@@ -15,5 +15,10 @@ class Permohonan extends Model
         'status',
         'qrcode',
         'ttd',
+        'tanggal_permohonan',
+        'surat_sekolah',
+        'proposal',
+        'ktp',
+        'surat_instansi',
     ];
 }

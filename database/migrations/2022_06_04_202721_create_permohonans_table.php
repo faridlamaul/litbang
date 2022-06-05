@@ -17,10 +17,15 @@ class CreatePermohonansTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('surat_id')->constrained('surats');
-            $table->string('status');
-            $table->string('qrcode');
-            $table->string('ttd');
-            $table->date('tanggal_permohonan');
+            $table->string('surat_sekolah')->nullable();
+            $table->string('proposal')->nullable();
+            $table->string('ktp')->nullable();
+            $table->string('surat_instansi')->nullable();
+            $table->string('status')->nullable()->default('Diproses');
+            $table->string('keterangan')->nullable()->default('Mohon maaf, surat permohonan yang anda ajukan masih diproses');
+            $table->string('qrcode')->nullable();
+            $table->string('ttd')->nullable();
+            $table->date('tanggal_permohonan')->nullable();
             $table->timestamps();
         });
     }

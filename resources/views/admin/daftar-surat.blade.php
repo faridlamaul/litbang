@@ -5,7 +5,7 @@
         <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 bg-slate-100 rounded-md pb-9">
             <div class="">
                 <div class="pt-8 px-7 flex items-center bottom-3">
-                    <a href="javascript:history.back()">
+                    <a href="{{ url('admin/dashboard') }}">
                         <button
                             class="focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-indigo-700 bg-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 rounded-full border-indigo-700 p-2">
                             <i class="fa-solid fa-arrow-left fa-xl text-white"></i>
@@ -141,7 +141,7 @@
                                             </div>
                                             <div class="modal-body relative p-4">
                                                 <p>Apakah Anda yakin ingin menghapus
-                                                    <span></span>?
+                                                    <span class="font-bold">{{ $surat->title }}</span> ?
                                                 </p>
                                             </div>
                                             <div

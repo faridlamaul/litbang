@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Permohonan;
 use App\Models\Surat;
 use App\Models\User;
 use com_exception;
@@ -25,7 +26,31 @@ class AdminController extends Controller
 
     public function daftarPermohonan()
     {
-        return view('admin.daftar-permohonan');
+        $permohonans = Permohonan::join('users', 'users.id', '=', 'permohonans.user_id')
+            ->join('surats', 'surats.id', '=', 'permohonans.surat_id')
+            ->select('permohonans.*', 'users.name', 'surats.title')
+            ->get();
+        // dd($permohonans->toArray());
+
+        return view('admin.daftar-permohonan', compact('permohonans'));
+    }
+
+    // public function terimaPermohonan()
+    // {
+
+    // }
+
+    public function tolakPermohonan(Request $request)
+    {
+        $permohonans = Permohonan::find($request->id);
+
+        $permohonans->status = 'Ditolak';
+
+        $permohonans->keterangan = $request->keterangan;
+
+        $permohonans->save();
+
+        return redirect('admin/daftar-permohonan');
     }
 
     public function daftarSurat()
@@ -38,7 +63,11 @@ class AdminController extends Controller
 
     public function detailPermohonan()
     {
-        return view('admin.detail-permohonan');
+        $detils = Permohonan::join('users', 'users.id', '=', 'permohonans.user_id')
+            ->select('permohonans.*', 'users.*')
+            ->get();
+
+        return view('admin.detail-permohonan', compact('detils'));
     }
 
     public function deleteUser(Request $request)

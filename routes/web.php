@@ -23,9 +23,11 @@ Route::get('/', function () {
 Route::group(['middleware' => ['role:user']], function () {
     Route::get('/user/dashboard', [UserController::class, 'index']);
 
+    Route::post('/user/permohonan/{id}', [UserController::class, 'permohonanUser']);
+
     Route::get('/user/riwayat', [UserController::class, 'riwayat']);
 
-    Route::get('/user/proccess', [UserController::class, 'proccess']);
+    // Route::get('/user/proccess', [UserController::class, 'proccess']);
 });
 
 // Middleware for admin
@@ -37,6 +39,8 @@ Route::group(['middleware' => ['role:admin']], function () {
 
     Route::get('/admin/daftar-permohonan', [AdminController::class, 'daftarPermohonan']);
 
+    Route::put('/admin/daftar-permohonan/tolak/{id}', [AdminController::class, 'tolakPermohonan']);
+
     Route::get('/admin/daftar-surat', [AdminController::class, 'daftarSurat']);
 
     Route::post('/admin/daftar-surat/add', [AdminController::class, 'addSurat']);
@@ -45,7 +49,7 @@ Route::group(['middleware' => ['role:admin']], function () {
 
     Route::delete('/admin/daftar-surat/delete/{id}', [AdminController::class, 'deleteSurat']);
 
-    Route::get('/admin/detail-permohonan', [AdminController::class, 'detailPermohonan']);
+    Route::get('/admin/detail-permohonan/{id}', [AdminController::class, 'detailPermohonan']);
 
     Route::delete('/admin/delete-user/{id}', [AdminController::class, 'deleteUser']);
 });

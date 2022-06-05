@@ -31,14 +31,29 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="bg-indigo-50">
-                                    <td class="text-center py-2 border border-gray-200">1</td>
-                                    <td class="pl-3 py-2 border border-gray-200">28/05/2022</td>
-                                    <td class="pl-3 py-2 border border-gray-200">Ifanu Antoni</td>
-                                    <td class="pl-3 py-2 border border-gray-200">Surat Perizinan 1</td>
-                                    <td class="pl-3 py-2 border border-gray-200 text-center text-blue-700">Diterima</td>
+                                @foreach ($permohonans as $permohonan)
+                                    @if ($loop->iteration % 2 == 1)
+                                        <tr class="bg-indigo-50">
+                                        @else
+                                        <tr class="bg-indigo-100">
+                                    @endif
+                                    <td class="text-center py-2 border border-gray-200">{{ $loop->iteration }}</td>
+                                    <td class="pl-3 py-2 border border-gray-200">{{ $permohonan->tanggal_permohonan }}
+                                    </td>
+                                    <td class="pl-3 py-2 border border-gray-200">{{ $permohonan->name }}</td>
+                                    <td class="pl-3 py-2 border border-gray-200">{{ $permohonan->title }}</td>
+                                    @if ($permohonan->status == 'Diproses')
+                                        <td class="pl-3 py-2 border border-gray-200 text-center text-gray-700">
+                                            {{ $permohonan->status }}</td>
+                                    @elseif ($permohonan->status == 'Diterima')
+                                        <td class="pl-3 py-2 border border-gray-200 text-center text-blue-700">
+                                            {{ $permohonan->status }}</td>
+                                    @else
+                                        <td class="pl-3 py-2 border border-gray-200 text-center text-red-700">
+                                            {{ $permohonan->status }}</td>
+                                    @endif
                                     <td class="py-2 border border-gray-200 text-center">
-                                        <a href="{{ url('/admin/detail-permohonan') }}">
+                                        <a href="{{ url('/admin/detail-permohonan/' . $permohonan->id) }}">
                                             <button
                                                 class="text-white text-sm focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-purple-700 bg-purple-700 transition duration-150 ease-in-out hover:bg-purple-600 rounded-md border-purple-700 px-2 py-2">
                                                 Detail
@@ -46,120 +61,111 @@
                                         </a>
                                         <button
                                             class="text-white text-sm focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-blue-700 bg-blue-700 transition duration-150 ease-in-out hover:bg-blue-600 rounded-md border-blue-700 px-2 py-2 mx-2"
-                                            data-bs-toggle="modal" data-bs-target="#modalTerima">
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#konfirmasi-terima-{{ $permohonan->id }}">
                                             Terima
                                         </button>
 
                                         <button
                                             class="text-white text-sm focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-red-700 bg-red-700 transition duration-150 ease-in-out hover:bg-red-600 rounded-md border-red-700 px-2 py-2 "
-                                            data-bs-toggle="modal" data-bs-target="#konfirmasiTolak">
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#konfirmasi-tolak-{{ $permohonan->id }}">
                                             Tolak
                                         </button>
                                     </td>
-                                </tr>
-                                    <tr class="bg-indigo-100">
-                                        <td class="text-center py-2 border border-gray-200">2</td>
-                                        <td class="pl-3 py-2 border border-gray-200">28/05/2022</td> 
-                                        <td class="pl-3 py-2 border border-gray-200">Ahmad lamaul farid</td>
-                                        <td class="pl-3 py-2 border border-gray-200">Surat Perizinan 2</td>
-                                        <td class="pl-3 py-2 border border-gray-200 text-center text-red-700">Ditolak</td>
-                                        <td class="py-2 border border-gray-200 text-center">
-                                            <button
-                                                class="text-white text-sm focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-purple-700 bg-purple-700 transition duration-150 ease-in-out hover:bg-purple-600 rounded-md border-purple-700 px-2 py-2">
-                                                Detail
-                                            </button>
-                                            <button
-                                                class="text-white text-sm focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-blue-700 bg-blue-700 transition duration-150 ease-in-out hover:bg-blue-600 rounded-md border-blue-700 px-2 py-2 mx-2">
-                                                Terima
-                                            </button>
-                                            <button
-                                                class="text-white text-sm focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-red-700 bg-red-700 transition duration-150 ease-in-out hover:bg-red-600 rounded-md border-red-700 px-2 py-2">
-                                                Tolak
-                                            </button>
-                                        </td>
                                     </tr>
+                                @endforeach
+                            </tbody>
 
-                                    <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-                                        id="modalTerima" tabindex="-1" aria-labelledby="modalTerima"
-                                        aria-modal="true" role="dialog">
-                                        <div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
+                            @foreach ($permohonans as $permohonan)
+                                <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+                                    id="konfirmasi-terima-{{ $permohonan->id }}" tabindex="-1"
+                                    aria-labelledby="konfirmasi-terima-{{ $permohonan->id }}" aria-modal="true"
+                                    role="dialog">
+                                    <div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
+                                        <div
+                                            class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
                                             <div
-                                                class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-                                                <div
-                                                    class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-                                                    <h5 class="text-xl font-medium leading-normal text-gray-800"
-                                                        id="exampleModalScrollableLabel">
-                                                        Terima Permohonan
-                                                    </h5>
-                                                    <button type="button"
-                                                        class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-                                                        data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body relative p-4">
-                                                    <p>Untuk menerima Permohonan ini silakan untuk mengupload tanda tangan !</p>
-                                                    <input type="file"
+                                                class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+                                                <h5 class="text-xl font-medium leading-normal text-gray-800"
+                                                    id="exampleModalScrollableLabel">
+                                                    Terima Permohonan
+                                                </h5>
+                                                <button type="button"
+                                                    class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body relative p-4">
+                                                <p>Untuk menerima Permohonan ini silakan untuk mengupload tanda tangan !</p>
+                                                <input type="file"
                                                     class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 pt-4" />
-                                                </div>
-                                                <div
-                                                    class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-                                                    <button type="button"
-                                                        class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                                                        >
-                                                        Upload
-                                                    </button>
-                                                    <button type="button"
-                                                        class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
-                                                        data-bs-dismiss="modal">
-                                                        Batal
-                                                    </button>
-                                                </div>
+                                            </div>
+                                            <div
+                                                class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
+                                                <button type="button"
+                                                    class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
+                                                    Upload
+                                                </button>
+                                                <button type="button"
+                                                    class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+                                                    data-bs-dismiss="modal">
+                                                    Batal
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
 
-                                    <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-                                        id="konfirmasiTolak" tabindex="-1" aria-labelledby="KonfirmasiTolak"
-                                        aria-modal="true" role="dialog">
-                                        <div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
+                                <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+                                    id="konfirmasi-tolak-{{ $permohonan->id }}" tabindex="-1"
+                                    aria-labelledby="konfirmasi-tolak-{{ $permohonan->id }}" aria-modal="true"
+                                    role="dialog">
+                                    <div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
+                                        <div
+                                            class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
                                             <div
-                                                class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-                                                <div
-                                                    class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-                                                    <h5 class="text-xl font-medium leading-normal text-gray-800"
-                                                        id="exampleModalScrollableLabel">
-                                                        Tolak Permohonan
-                                                    </h5>
-                                                    <button type="button"
-                                                        class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-                                                        data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body relative p-4">
-                                                    <p>Apakah Anda yakin ingin menolak permohonan ini?</p>
-                                                </div>
-                                                <div
-                                                    class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-                                                    <button type="button"
-                                                        class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                                                        data-bs-dismiss="modal">
-                                                        Tidak
-                                                    </button>
-                                                    <button type="button"
-                                                        class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
-                                                        data-bs-toggle="modal" data-bs-target="#alasanTolak">
-                                                        Ya
-                                                    </button>
-                                                </div>
+                                                class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+                                                <h5 class="text-xl font-medium leading-normal text-gray-800"
+                                                    id="exampleModalScrollableLabel">
+                                                    Tolak Permohonan
+                                                </h5>
+                                                <button type="button"
+                                                    class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+                                                    data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
+                                            <div class="modal-body relative p-4">
+                                                <p>Apakah Anda yakin ingin menolak permohonan ini?</p>
+                                            </div>
+                                            <div
+                                                class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
+                                                <button type="button"
+                                                    class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+                                                    data-bs-dismiss="modal">
+                                                    Tidak
+                                                </button>
+                                                <button type="submit"
+                                                    class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#alasan-tolak-{{ $permohonan->id }}">
+                                                    Ya
+                                                </button>
+                                            </div>
+
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-                                        id="alasanTolak" tabindex="-1" aria-labelledby="alasanTolak"
-                                        aria-modal="true" role="dialog">
-                                        <div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
-                                            <div
-                                                class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+                                <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
+                                    id="alasan-tolak-{{ $permohonan->id }}" tabindex="-1"
+                                    aria-labelledby="alasan-tolak-{{ $permohonan->id }}" aria-modal="true" role="dialog">
+                                    <div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
+                                        <div
+                                            class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
+                                            <form action="{{ url('admin/daftar-permohonan/tolak/' . $permohonan->id) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('PUT')
                                                 <div
                                                     class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
                                                     <h5 class="text-xl font-medium leading-normal text-gray-800"
@@ -171,14 +177,15 @@
                                                         data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body relative p-4">
-                                                    <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Pesan</label>
-                                                    <textarea id="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Ketik disini..."></textarea>
+                                                    <label for="message"
+                                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Pesan</label>
+                                                    <textarea name="keterangan" id="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                        placeholder="Ketik disini..."></textarea>
                                                 </div>
                                                 <div
                                                     class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-                                                    <button type="button"
-                                                        class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-                                                        >
+                                                    <button type="submit"
+                                                        class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
                                                         Kirim
                                                     </button>
                                                     <button
@@ -187,10 +194,11 @@
                                                         Batal
                                                     </button>
                                                 </div>
-                                            </div>
+                                            </form>
                                         </div>
                                     </div>
-                            </tbody>
+                                </div>
+                            @endforeach
                         </table>
                         {{-- <div class="pt-6 pb-6 flex justify-center">
                             <button>
