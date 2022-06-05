@@ -39,6 +39,14 @@ Route::group(['middleware' => ['role:admin']], function () {
 
     Route::get('/admin/daftar-permohonan', [AdminController::class, 'daftarPermohonan']);
 
+    Route::get('/admin/daftar-permohonan/download/surat-sekolah/{id}', [AdminController::class, 'getDownloadSuratSekolah']);
+
+    Route::get('/admin/daftar-permohonan/download/proposal/{id}', [AdminController::class, 'getDownloadProposal']);
+
+    Route::get('/admin/daftar-permohonan/download/ktp/{id}', [AdminController::class, 'getDownloadKTP']);
+
+    Route::get('/admin/daftar-permohonan/download/surat-instansi/{id}', [AdminController::class, 'getDownloadSuratInstansi']);
+
     Route::put('/admin/daftar-permohonan/tolak/{id}', [AdminController::class, 'tolakPermohonan']);
 
     Route::get('/admin/daftar-surat', [AdminController::class, 'daftarSurat']);

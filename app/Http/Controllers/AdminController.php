@@ -62,12 +62,12 @@ class AdminController extends Controller
 
     public function detailPermohonan(Request $request)
     {
-        $detils = Permohonan::join('riwayats', 'riwayats.id', '=', 'permohonans.riwayat_id')
+        $details = Permohonan::join('riwayats', 'riwayats.id', '=', 'permohonans.riwayat_id')
             ->select('permohonans.*', 'riwayats.*')
             ->where('permohonans.id', $request->id)
             ->get();
 
-        return view('admin.detail-permohonan', compact('detils'));
+        return view('admin.detail-permohonan', compact('details'));
     }
 
     public function deleteUser(Request $request)
@@ -114,5 +114,41 @@ class AdminController extends Controller
         $surat->delete();
 
         return redirect('/admin/daftar-surat')->with('success', 'Surat berhasil dihapus');
+    }
+
+    public function getDownloadSuratSekolah(Request $request)
+    {
+        $permohonan = Permohonan::find($request->id);
+
+        $file = public_path() . '/DataPemohon/SuratSekolah/' . $permohonan->surat_sekolah;
+
+        return response()->download($file);
+    }
+
+    public function getDownloadProposal(Request $request)
+    {
+        $permohonan = Permohonan::find($request->id);
+
+        $file = public_path() . '/DataPemohon/Proposal/' . $permohonan->proposal;
+
+        return response()->download($file);
+    }
+
+    public function getDownloadKTP(Request $request)
+    {
+        $permohonan = Permohonan::find($request->id);
+
+        $file = public_path() . '/DataPemohon/KTP/' . $permohonan->ktp;
+
+        return response()->download($file);
+    }
+
+    public function getDownloadSuratInstansi(Request $request)
+    {
+        $permohonan = Permohonan::find($request->id);
+
+        $file = public_path() . '/DataPemohon/SuratInstansi/' . $permohonan->surat_instansi;
+
+        return response()->download($file);
     }
 }

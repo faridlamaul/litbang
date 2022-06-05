@@ -31,12 +31,12 @@
                                     data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="p-6 justify-center">
-                                @foreach ($detils as $detil)
+                                @foreach ($details as $detail)
                                     <div class="">
                                         <div class="mb-3 flex">
                                             <label for="exampleFormControlInput1"
                                                 class="form-label inline-block mb-2 text-gray-700 w-1/6">Nama</label>
-                                            <input disabled type="text" value="{{ $detil->name }}"
+                                            <input disabled type="text" value="{{ $detail->name }}"
                                                 class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                                 placeholder="Nama" />
                                         </div>
@@ -44,7 +44,7 @@
                                         <div class="mb-3 flex">
                                             <label for="exampleFormControlInput1"
                                                 class="form-label inline-block mb-2 text-gray-700 w-1/6">Alamat</label>
-                                            <input disabled type="text" value="{{ $detil->alamat }}"
+                                            <input disabled type="text" value="{{ $detail->alamat }}"
                                                 class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                                 placeholder="Alamat" />
                                         </div>
@@ -53,7 +53,7 @@
                                             <label for="exampleFormControlInput1"
                                                 class="form-label inline-block mb-2 text-gray-700 w-1/6">Asal
                                                 Sekolah</label>
-                                            <input disabled type="text" value="{{ $detil->asal_sekolah }}"
+                                            <input disabled type="text" value="{{ $detail->asal_sekolah }}"
                                                 class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                                 placeholder="Asal Sekolah" />
                                         </div>
@@ -61,7 +61,7 @@
                                         <div class="mb-3 flex">
                                             <label for="exampleFormControlInput1"
                                                 class="form-label inline-block mb-2 text-gray-700 w-1/6">Email</label>
-                                            <input disabled type="email" value="{{ $detil->email }}"
+                                            <input disabled type="email" value="{{ $detail->email }}"
                                                 class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                                 placeholder="Email" />
                                         </div>
@@ -70,7 +70,7 @@
                                             <label for="exampleFormControlInput1"
                                                 class="form-label inline-block mb-2 text-gray-700 w-1/6">Nomor
                                                 Telepon</label>
-                                            <input disabled type="text" value="{{ $detil->no_telp }}"
+                                            <input disabled type="text" value="{{ $detail->no_telp }}"
                                                 class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                                 placeholder="Nomor Telepon" />
                                         </div>
@@ -83,9 +83,12 @@
                                                 <div class="p-6">
                                                     <h5 class="text-gray-900 text-xl font-medium text-center">Surat Sekolah1
                                                     </h5>
-                                                    <button
-                                                        class="block w-full mr-4 py-2 px-4 mt-4 rounded-full border-0 text-md font-semibold bg-violet-50 text-violet-700 hover:bg-violet-100">
-                                                        Unduh </button>
+                                                    <a
+                                                        href="{{ url('admin/daftar-permohonan/download/surat-sekolah/' . $detail->id) }}">
+                                                        <button
+                                                            class="block w-full mr-4 py-2 px-4 mt-4 rounded-full border-0 text-md font-semibold bg-violet-50 text-violet-700 hover:bg-violet-100">
+                                                            Unduh </button>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -94,10 +97,12 @@
                                                 <i class="far fa-file-alt fa-4x mb-3 text-primary"></i>
                                                 <div class="p-6">
                                                     <h5 class="text-gray-900 text-xl font-medium text-center">Proposal</h5>
-                                                    {{-- <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button> --}}
-                                                    <button
-                                                        class="block w-full mr-4 py-2 px-4 mt-4 rounded-full border-0 text-md font-semibold bg-violet-50 text-violet-700 hover:bg-violet-100">
-                                                        Unduh </button>
+                                                    <a
+                                                        href="{{ url('admin/daftar-permohonan/download/proposal/' . $detail->id) }}">
+                                                        <button
+                                                            class="block w-full mr-4 py-2 px-4 mt-4 rounded-full border-0 text-md font-semibold bg-violet-50 text-violet-700 hover:bg-violet-100">
+                                                            Unduh </button>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -108,10 +113,12 @@
                                                     <h5 class="text-gray-900 text-xl font-medium text-center">KTP/Kartu
                                                         Pelajar
                                                     </h5>
-                                                    {{-- <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button> --}}
-                                                    <button
-                                                        class="block w-full mr-4 py-2 px-4 mt-4 rounded-full border-0 text-md font-semibold bg-violet-50 text-violet-700 hover:bg-violet-100">
-                                                        Unduh </button>
+                                                    <a
+                                                        href="{{ url('admin/daftar-permohonan/download/ktp/' . $detail->id) }}">
+                                                        <button
+                                                            class="block w-full mr-4 py-2 px-4 mt-4 rounded-full border-0 text-md font-semibold bg-violet-50 text-violet-700 hover:bg-violet-100">
+                                                            Unduh </button>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -121,10 +128,12 @@
                                                 <div class="p-6">
                                                     <h5 class="text-gray-900 text-xl font-medium text-center">Surat dari
                                                         Instansi</h5>
-                                                    {{-- <button type="button" class=" inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button> --}}
-                                                    <button
-                                                        class="block w-full mr-4 py-2 px-4 mt-4 rounded-full border-0 text-md font-semibold bg-violet-50 text-violet-700 hover:bg-violet-100">
-                                                        Unduh </button>
+                                                    <a
+                                                        href="{{ url('admin/daftar-permohonan/download/surat-instansi/' . $detail->id) }}">
+                                                        <button
+                                                            class="block w-full mr-4 py-2 px-4 mt-4 rounded-full border-0 text-md font-semibold bg-violet-50 text-violet-700 hover:bg-violet-100">
+                                                            Unduh </button>
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>

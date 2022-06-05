@@ -200,17 +200,6 @@
                                 </div>
                             @endforeach
                         </table>
-                        {{-- <div class="pt-6 pb-6 flex justify-center">
-                            <button>
-                                <i class="fa-solid fa-angle-left fa-lg text-gray-400 hover:text-gray-600"></i>
-                            </button>
-                            <h5 class="px-5 text-gray-400">
-                                10 dari 100
-                            </h5>
-                            <button>
-                                <i class="fa-solid fa-angle-right fa-lg text-gray-400 hover:text-gray-600"></i>
-                            </button>
-                        </div> --}}
                     </div>
                 </div>
             </div>
