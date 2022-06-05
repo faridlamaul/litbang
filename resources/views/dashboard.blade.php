@@ -6,10 +6,13 @@
             <div class="w-1/4">
                 <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light" data-bs-toggle="modal"
                     data-bs-target="#suratPerizinanModal">
-                    <div class="rounded-lg shadow-lg bg-white max-w-sm">
-                        <img class="rounded-t-lg" src="https://mdbootstrap.com/img/new/standard/nature/182.jpg" alt="" />
+                    <div class="rounded-lg shadow-xl bg-blue-50 max-w-sm">
+                        <div class="rounded-t-lg text-center pt-8">
+                            <i class="fa-solid fa-file-import fa-8x text-blue-800"></i>
+                        </div>
+                        {{-- <img class="rounded-t-lg" src="https://mdbootstrap.com/img/new/standard/nature/182.jpg" alt="" /> --}}
                         <div class="p-6">
-                            <h5 class="text-gray-900 text-xl font-medium mb-2">Surat Perizinan 1</h5>
+                            <h5 class="text-gray-900 text-2xl font-medium text-center mb-5">Surat 1</h5>
                             <p class="text-gray-700 text-base mb-4">
                                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore nemo repudiandae vel quae
                                 minus enim. Doloribus, dicta illo. Suscipit nulla quidem sapiente voluptas perspiciatis odit
@@ -23,10 +26,13 @@
             <div class="w-1/4">
                 <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light" data-bs-toggle="modal"
                     data-bs-target="#suratPerizinanModal">
-                    <div class="rounded-lg shadow-lg bg-white max-w-sm">
-                        <img class="rounded-t-lg" src="https://mdbootstrap.com/img/new/standard/nature/182.jpg" alt="" />
+                    <div class="rounded-lg shadow-xl bg-blue-50 max-w-sm">
+                        <div class="rounded-t-lg text-center pt-8">
+                            <i class="fa-solid fa-file-import fa-8x text-blue-800"></i>
+                        </div>
+                        {{-- <img class="rounded-t-lg" src="https://mdbootstrap.com/img/new/standard/nature/182.jpg" alt="" /> --}}
                         <div class="p-6">
-                            <h5 class="text-gray-900 text-xl font-medium mb-2">Surat Perizinan 2</h5>
+                            <h5 class="text-gray-900 text-2xl font-medium text-center mb-5">Surat 2</h5>
                             <p class="text-gray-700 text-base mb-4">
                                 Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore nemo repudiandae vel quae
                                 minus enim. Doloribus, dicta illo. Suscipit nulla quidem sapiente voluptas perspiciatis odit

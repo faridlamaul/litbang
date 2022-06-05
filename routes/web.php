@@ -37,6 +37,8 @@ Route::group(['middleware' => ['role:admin']], function () {
 
     Route::get('/admin/daftar-permohonan', [AdminController::class, 'daftarPermohonan']);
 
+    Route::get('/admin/daftar-surat', [AdminController::class, 'daftarSurat']);
+
     Route::get('/admin/detail-permohonan', [AdminController::class, 'detailPermohonan']);
 
     Route::delete('/admin/delete-user/{id}', [AdminController::class, 'deleteUser']);

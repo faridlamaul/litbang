@@ -1,8 +1,8 @@
 @extends('admin.layout')
 
 @section('content')
-    <div class="bg-gray-200 pt-14 pb-6">
-        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 bg-slate-100 rounded-md">
+    <div class="bg-gray-200 pt-14 pb-6" style="min-height: 80vh">
+        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 bg-slate-100 rounded-md pb-9">
             <div class="">
                 <div class="pt-8 px-7 flex items-center bottom-3">
                     <a href="javascript:history.back()">
@@ -91,7 +91,7 @@
                                 @endforeach
                             </tbody>
                         </table>
-                        <div class="pt-6 pb-6 flex justify-center">
+                        {{-- <div class="pt-6 pb-6 flex justify-center">
                             <button>
                                 <i class="fa-solid fa-angle-left fa-lg text-gray-400 hover:text-gray-600"></i>
                             </button>
@@ -101,7 +101,7 @@
                             <button>
                                 <i class="fa-solid fa-angle-right fa-lg text-gray-400 hover:text-gray-600"></i>
                             </button>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

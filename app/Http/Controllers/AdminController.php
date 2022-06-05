@@ -28,6 +28,12 @@ class AdminController extends Controller
         return view('admin.daftar-permohonan');
     }
 
+    public function daftarSurat()
+    {
+        return view('admin.daftar-surat');
+    }
+
+
     public function detailPermohonan()
     {
         return view('admin.detail-permohonan');
