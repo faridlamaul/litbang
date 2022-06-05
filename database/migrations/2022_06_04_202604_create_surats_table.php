@@ -16,8 +16,7 @@ class CreateSuratsTable extends Migration
         Schema::create('surats', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
-            $table->string('image');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

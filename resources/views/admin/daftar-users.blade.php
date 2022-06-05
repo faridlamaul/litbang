@@ -38,13 +38,13 @@
                                             {{-- <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light" data-bs-toggle="modal" data-bs-target="#alertHapus"> --}}
                                             <button
                                                 class="text-white focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-red-700 bg-red-700 transition duration-150 ease-in-out hover:bg-red-600 rounded-lg border-red-700 px-3 py-1"
-                                                data-bs-toggle="modal" data-bs-target="#modal-{{ $user->id }}">
+                                                data-bs-toggle="modal" data-bs-target="#hapusUser{{ $user->id }}">
                                                 Hapus
                                             </button>
                                             {{-- </a> --}}
                                         </td>
                                         <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto"
-                                            id="modal-{{ $user->id }}" tabindex="-1"
+                                            id="hapusUser{{ $user->id }}" tabindex="-1"
                                             aria-labelledby="exampleModalCenterTitle" aria-modal="true" role="dialog">
                                             <div
                                                 class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">

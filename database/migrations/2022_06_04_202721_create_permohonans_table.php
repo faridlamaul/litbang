@@ -20,6 +20,7 @@ class CreatePermohonansTable extends Migration
             $table->string('status');
             $table->string('qrcode');
             $table->string('ttd');
+            $table->date('tanggal_permohonan');
             $table->timestamps();
         });
     }
