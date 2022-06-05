@@ -30,7 +30,9 @@ class AdminController extends Controller
 
     public function daftarSurat()
     {
-        return view('admin.daftar-surat');
+        $surats = Surat::all();
+
+        return view('admin.daftar-surat', compact('surats'));
     }
 
 
@@ -52,19 +54,11 @@ class AdminController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,svg', 'max:2048']
         ]);
 
         $input = $request->all();
 
-        if ($image = $request->file('image')) {
-            $destinationPath = 'SuratImage/';
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $inputItem['image'] = "$profileImage";
-        }
-
-        $surat = Surat::create($input);
+        Surat::create($input);
 
         return redirect('/admin/daftar-surat')->with('success', 'Surat berhasil ditambahkan');
     }
@@ -74,19 +68,9 @@ class AdminController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'image' => ['image', 'mimes:jpeg,png,jpg,svg', 'max:2048']
         ]);
 
         $input = $request->all();
-
-        if ($image = $request->file('image')) {
-            $destinationPath = 'SuratImage/';
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['image'] = "$profileImage";
-        } else {
-            unseted($input['image']);
-        }
 
         $surat = Surat::find($request->id);
 

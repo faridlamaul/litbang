@@ -39,6 +39,12 @@ Route::group(['middleware' => ['role:admin']], function () {
 
     Route::get('/admin/daftar-surat', [AdminController::class, 'daftarSurat']);
 
+    Route::post('/admin/daftar-surat/add', [AdminController::class, 'addSurat']);
+
+    Route::put('/admin/daftar-surat/edit/{id}', [AdminController::class, 'updateSurat']);
+
+    Route::delete('/admin/daftar-surat/delete/{id}', [AdminController::class, 'deleteSurat']);
+
     Route::get('/admin/detail-permohonan', [AdminController::class, 'detailPermohonan']);
 
     Route::delete('/admin/delete-user/{id}', [AdminController::class, 'deleteUser']);
