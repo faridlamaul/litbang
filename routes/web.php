@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,37 +21,25 @@ Route::get('/', function () {
 
 // Middleware for user
 Route::group(['middleware' => ['role:user']], function () {
-    Route::get('/user/dashboard', function () {
-        return view('dashboard');
-    });
+    Route::get('/user/dashboard', [UserController::class, 'index']);
 
-    Route::get('/user/riwayat', function () {
-        return view('riwayat');
-    });
+    Route::get('/user/riwayat', [UserController::class, 'riwayat']);
 
-    Route::get('/user/proccess', function () {
-        return view('proccess');
-    });
+    Route::get('/user/proccess', [UserController::class, 'proccess']);
 });
 
 // Middleware for admin
 Route::group(['middleware' => ['role:admin']], function () {
 
-    Route::get('/admin/dashboard', function () {
-        return view('admin.dashboard');
-    });
+    Route::get('/admin/dashboard', [AdminController::class, 'index']);
 
-    Route::get('/admin/daftar-users', function () {
-        return view('admin.daftar-users');
-    });
+    Route::get('/admin/daftar-users', [AdminController::class, 'daftarUsers']);
 
-    Route::get('/admin/daftar-permohonan', function () {
-        return view('admin.daftar-permohonan');
-    });
+    Route::get('/admin/daftar-permohonan', [AdminController::class, 'daftarPermohonan']);
 
-    Route::get('/admin/detail-permohonan', function () {
-        return view('admin.detail-permohonan');
-    });
+    Route::get('/admin/detail-permohonan', [AdminController::class, 'detailPermohonan']);
+
+    Route::delete('/admin/delete-user/{id}', [AdminController::class, 'deleteUser']);
 });
 
 require __DIR__ . '/auth.php';
