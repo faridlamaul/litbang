@@ -4,9 +4,9 @@
     <div class="bg-gray-100 pb-20">
 
         <div class="container mx-auto py-16">
-            <div class="flex flex-row flex-wrap space-x-4 w-full justify-center">
+            <div class="flex flex-row flex-wrap w-full justify-center">
                 @foreach ($surats as $surat)
-                    <div class="rounded-lg shadow-xl bg-blue-50  w-1/5 mx-10">
+                    <div class="rounded-lg shadow-xl bg-blue-50  w-1/5 mx-3 mb-10">
                         <a href="#!" data-mdb-ripple="true" data-mdb-ripple-color="light" data-bs-toggle="modal"
                             data-bs-target="#suratPerizinanModal-{{ $surat->id }}">
                             <div class="max-w-xs">
