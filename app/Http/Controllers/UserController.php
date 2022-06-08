@@ -9,6 +9,10 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use PDF;
+use QrCode;
+
+use function PHPSTORM_META\type;
 
 class UserController extends Controller
 {
@@ -95,5 +99,17 @@ class UserController extends Controller
         ]);
 
         return redirect('user/riwayat')->with('success', 'Permohonan berhasil dikirim');
+    }
+
+    public function generatePDF(Request $request)
+    {
+        $permohonan = Permohonan::find($request->id);
+
+        $qrcode = base64_encode(QrCode::format('svg')->size(100)->errorCorrection('H')->generate($permohonan['qrcode']));
+
+        $pdf = PDF::loadView('surat-persetujuan-pdf', compact('qrcode'));
+
+        // display pdf in browser
+        return $pdf->stream('Surat-' . $permohonan['tanggal_permohonan'] . '-' . $permohonan['name'] . '.' . 'pdf');
     }
 }

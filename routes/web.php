@@ -27,6 +27,8 @@ Route::group(['middleware' => ['role:user']], function () {
 
     Route::get('/user/riwayat', [UserController::class, 'riwayat']);
 
+    Route::get('/user/riwayat/surat/persetujuan/pdf/{id}', [UserController::class, 'generatePDF']);
+
     // Route::get('/user/proccess', [UserController::class, 'proccess']);
 });
 

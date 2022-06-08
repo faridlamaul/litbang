@@ -64,7 +64,8 @@
                                                     </button>
                                                 </a>
                                             @elseif ($permohonan->status == 'Diterima')
-                                                <a href="#">
+                                                <a
+                                                    href="{{ url('user/riwayat/surat/persetujuan/pdf/' . $permohonan->id) }}">
                                                     <button
                                                         class="text-white text-sm focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-blue-700 bg-blue-700 transition duration-150 ease-in-out hover:bg-blue-600 rounded-lg border-blue-700 px-3 py-1"
                                                         {{-- data-bs-toggle="modal" data-bs-target="#modal-" --}}>

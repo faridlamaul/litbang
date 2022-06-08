@@ -52,14 +52,25 @@ class AdminController extends Controller
 
     public function terimaPermohonan(Request $request)
     {
+        $request->validate([
+            'ttd' => 'required',
+        ]);
+
         $permohonans = Permohonan::find($request->id);
 
         $permohonans->status = 'Diterima';
 
-        $permohonans->ttd = $request->ttd;
+        $imageToString = substr(file_get_contents($request->file('ttd')->path()), 20, 20);
+
+        if ($ttd = $request->file('ttd')) {
+            $destinationPath = 'DataPemohon/TTD/';
+            $ttdName = "TTD_" . date('YmdHis') . "." . $ttd->getClientOriginalExtension();
+            $ttd->move($destinationPath, $ttdName);
+            $permohonans->ttd = "$ttdName";
+        }
 
         // AES Encrypt
-        $AESEncrypt = Crypt::encryptString($permohonans->riwayat_id . '|' . $permohonans->surat_id . '|' . $permohonans->ttd);
+        $AESEncrypt = Crypt::encryptString($imageToString);
 
         $permohonans->qrcode = $AESEncrypt;
 
@@ -166,5 +177,16 @@ class AdminController extends Controller
         $file = public_path() . '/DataPemohon/SuratInstansi/' . $permohonan->surat_instansi;
 
         return response()->download($file);
+    }
+
+    public function generatePDF(Request $request)
+    {
+        $permohonan = Permohonan::find($request->id);
+
+        $file = public_path() . '/DataPemohon/SuratSekolah/' . $permohonan->surat_sekolah;
+
+        $pdf = \PDF::loadView('admin.pdf', compact('permohonan'));
+
+        return $pdf->download('SuratSekolah.pdf');
     }
 }
