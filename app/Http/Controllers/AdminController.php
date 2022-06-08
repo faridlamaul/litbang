@@ -7,6 +7,9 @@ use App\Models\Surat;
 use App\Models\User;
 use com_exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
+use Mockery\Matcher\Subset;
 
 class AdminController extends Controller
 {
@@ -34,11 +37,6 @@ class AdminController extends Controller
         return view('admin.daftar-permohonan', compact('permohonans'));
     }
 
-    // public function terimaPermohonan()
-    // {
-
-    // }
-
     public function tolakPermohonan(Request $request)
     {
         $permohonans = Permohonan::find($request->id);
@@ -46,6 +44,24 @@ class AdminController extends Controller
         $permohonans->status = 'Ditolak';
 
         $permohonans->keterangan = $request->keterangan;
+
+        $permohonans->save();
+
+        return redirect('admin/daftar-permohonan');
+    }
+
+    public function terimaPermohonan(Request $request)
+    {
+        $permohonans = Permohonan::find($request->id);
+
+        $permohonans->status = 'Diterima';
+
+        $permohonans->ttd = $request->ttd;
+
+        // AES Encrypt
+        $AESEncrypt = Crypt::encryptString($permohonans->riwayat_id . '|' . $permohonans->surat_id . '|' . $permohonans->ttd);
+
+        $permohonans->qrcode = $AESEncrypt;
 
         $permohonans->save();
 

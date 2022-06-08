@@ -49,6 +49,8 @@ Route::group(['middleware' => ['role:admin']], function () {
 
     Route::put('/admin/daftar-permohonan/tolak/{id}', [AdminController::class, 'tolakPermohonan']);
 
+    Route::put('/admin/daftar-permohonan/terima/{id}', [AdminController::class, 'terimaPermohonan']);
+
     Route::get('/admin/daftar-surat', [AdminController::class, 'daftarSurat']);
 
     Route::post('/admin/daftar-surat/add', [AdminController::class, 'addSurat']);

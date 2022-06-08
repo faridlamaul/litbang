@@ -85,33 +85,39 @@
                                     <div class="modal-dialog modal-dialog-centered relative w-auto pointer-events-none">
                                         <div
                                             class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
-                                            <div
-                                                class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
-                                                <h5 class="text-xl font-medium leading-normal text-gray-800"
-                                                    id="exampleModalScrollableLabel">
-                                                    Terima Permohonan
-                                                </h5>
-                                                <button type="button"
-                                                    class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
-                                                    data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body relative p-4">
-                                                <p>Untuk menerima Permohonan ini silakan untuk mengupload tanda tangan !</p>
-                                                <input type="file"
-                                                    class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 pt-4" />
-                                            </div>
-                                            <div
-                                                class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
-                                                <button type="button"
-                                                    class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
-                                                    Upload
-                                                </button>
-                                                <button type="button"
-                                                    class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
-                                                    data-bs-dismiss="modal">
-                                                    Batal
-                                                </button>
-                                            </div>
+                                            <form action="{{ url('admin/daftar-permohonan/terima/' . $permohonan->id) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <div
+                                                    class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">
+                                                    <h5 class="text-xl font-medium leading-normal text-gray-800"
+                                                        id="exampleModalScrollableLabel">
+                                                        Terima Permohonan
+                                                    </h5>
+                                                    <button type="button"
+                                                        class="btn-close box-content w-4 h-4 p-1 text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline"
+                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body relative p-4">
+                                                    <p>Untuk menerima Permohonan ini silakan untuk mengupload tanda tangan !
+                                                    </p>
+                                                    <input type="file"
+                                                        class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100 pt-4" />
+                                                </div>
+                                                <div
+                                                    class="modal-footer flex flex-shrink-0 flex-wrap items-center justify-end p-4 border-t border-gray-200 rounded-b-md">
+                                                    <button type="button"
+                                                        class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">
+                                                        Upload
+                                                    </button>
+                                                    <button type="button"
+                                                        class="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out ml-1"
+                                                        data-bs-dismiss="modal">
+                                                        Batal
+                                                    </button>
+                                                </div>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -179,7 +185,8 @@
                                                 <div class="modal-body relative p-4">
                                                     <label for="message"
                                                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Pesan</label>
-                                                    <textarea name="keterangan" id="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                                    <textarea name="keterangan" id="message" rows="6"
+                                                        class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                                         placeholder="Ketik disini..."></textarea>
                                                 </div>
                                                 <div
