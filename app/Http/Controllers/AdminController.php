@@ -43,6 +43,8 @@ class AdminController extends Controller
 
         $permohonans->status = 'Ditolak';
 
+        $permohonans->keterangan = 'Maaf, surat Anda tidak kami terima.';
+
         $permohonans->keterangan = $request->keterangan;
 
         $permohonans->save();
@@ -59,6 +61,8 @@ class AdminController extends Controller
         $permohonans = Permohonan::find($request->id);
 
         $permohonans->status = 'Diterima';
+
+        $permohonans->keterangan = 'Surat Anda telah kami terima.';
 
         $imageToString = substr(file_get_contents($request->file('ttd')->path()), 20, 20);
 

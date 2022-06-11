@@ -19,6 +19,10 @@ Route::get('/', function () {
     return view('homepage');
 });
 
+Route::get('/edit-surat', function () {
+    return view('edit-pdf');
+});
+
 // Middleware for user
 Route::group(['middleware' => ['role:user']], function () {
     Route::get('/user/dashboard', [UserController::class, 'index']);

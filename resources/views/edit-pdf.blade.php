@@ -9,6 +9,7 @@
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" /> --}}
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> --}}
     <link rel="stylesheet" href="{{ ltrim(asset('css/app.css'), '/') }}" type="text/css">
 
     <style>
@@ -32,6 +33,8 @@
     <div class="container mx-auto my-10 py-10">
         <div class="flex flex-row">
             <img src="data:image/png;base64, {{ asset('pdf_assets/logo.png') }}" alt="">
+
+
             <div class="flex flex-col w-full text-center">
                 <h1 class="uppercase font-bold text-4xl">Pemerintah Kabupaten gresik</h1>
                 <h1 class="uppercase font-bold text-4xl">Badan Perencanaan Pembangunan, Penelitian, dan Pengembangan</h1>
@@ -45,15 +48,15 @@
             <div id="duwuran" class="flex flex-row w-full">
                 <div class="flex flex-col w-1/2">
                     <p>Nomor&emsp;&emsp;&emsp;:&emsp;<span>(nomor)</span></p>
-                    <p>Sifat&emsp;&emsp;&emsp;&emsp;:&emsp;<span>Penting</span></p>
-                    <p>Lampiran&emsp;&emsp;:&emsp;<span>1 (Satu) Berkas</span></p>
-                    <p>Perihal&emsp;&emsp;&emsp;:&emsp;<span>{{ $permohonan->title }}</span></p>
+                    <p>Sifat&emsp;&emsp;&emsp;&emsp;:&emsp;<span>(sifat)</span></p>
+                    <p>Lampiran&emsp;&emsp;:&emsp;<span>(lampiran)</span></p>
+                    <p>Perihal&emsp;&emsp;&emsp;:&emsp;<span>(perihal)</span></p>
                 </div>
                 <div class="flex flex-col w-1/2">
-                    <p>Gresik, <span>{{ $permohonan->created_at }}</span></p>
+                    <p>(Tempat, tanggal persetujuan)</p>
                     <div class="flex flex-row">
                         <p>Kepada <br> Yth</p>
-                        <p class="text-2xl m-5">Kepala Departemen Fakultas Teknologi Kelautan Universitas Negeri Surabaya</p>
+                        <p class="text-2xl m-5">(Kepada siapa tuch)</p>
                     </div>
                 </div>
             </div>
@@ -75,29 +78,29 @@
                 <div class="flex flex-row">
                     <p class="mx-8">1.</p>
                     <p class="w-1/4">Nama</p>
-                    <p>:&emsp;&emsp;{{ $permohonan->name }}</p>
+                    <p>:&emsp;&emsp;(value)</p>
                 </div>
-                {{-- <div class="flex flex-row">
+                <div class="flex flex-row">
                     <p class="mx-8">2.</p>
                     <p class="w-1/4">NIM/NIK/NIDN</p>
                     <p>:&emsp;&emsp;(value)</p>
-                </div> --}}
+                </div>
                 <div class="flex flex-row">
                     <p class="mx-8">3.</p>
-                    <p class="w-1/4">Asal Sekolah</p>
-                    <p>:&emsp;&emsp;{{ $permohonan->asal_sekolah }}</p>
+                    <p class="w-1/4">Pekerjaan</p>
+                    <p>:&emsp;&emsp;(value)</p>
                 </div>
                 <div class="flex flex-row">
                     <p class="mx-8">4.</p>
                     <p class="w-1/4">Alamat</p>
-                    <p>:&emsp;&emsp;{{ $permohonan->alamat }}</p>
+                    <p>:&emsp;&emsp;(value)</p>
                 </div>
                 <div class="flex flex-row">
                     <p class="mx-8">5.</p>
                     <p class="w-1/4">Keperluan dilakukannya Penelitian/Survey/Riset/KKN/PKL</p>
-                    <p>:&emsp;&emsp;Untuk mnegajukan {{ $permohonan->title }}</p>
+                    <p>:&emsp;&emsp;(value)</p>
                 </div>
-                {{-- <div class="flex flex-row">
+                <div class="flex flex-row">
                     <p class="mx-8">6.</p>
                     <p class="w-1/4">Tempat melakukan Penelitian/Survey/Riset/KKN/PKL</p>
                     <p>:&emsp;&emsp;(value)</p>
@@ -111,7 +114,7 @@
                     <p class="mx-8">8.</p>
                     <p class="w-1/4">Peserta/Pengikut</p>
                     <p>:&emsp;&emsp;(value)</p>
-                </div> --}}
+                </div>
             </div>
             <div id="perhatikan" class="flex flex-col mt-10">
                 <p>Dalam melakukan kegiatan Penelitian/Survey/Riset/KKN/PKL agar memperhatikan hal-hal sebagai berikut :</p>
@@ -138,12 +141,12 @@
                     <p class="text-2xl font-bold">An.KEPALA BADAN PERENCANAAN PEMBANGUNAN, PENELITIAN DAN PENGEMBANGAN <br> KABUPATEN GRESIK</p>
                     <p class="font-bold">Kabid. Penelitian dan Pengembangan</p>
                     <div class="text-center my-5" style="text-align: -webkit-center;">
-                        <img src="data:image/png;base64, {{ $qrcode }}" alt="">
 
+                        {!! QrCode::size(250)->generate('codingdriver.com'); !!}
                     </div>
-                    <p class="uppercase text-2xl font-bold"><u>Dhiannita Triastuti</u></p>
+                    <p class="uppercase text-2xl font-bold"><u>(value)</u></p>
                     <p>Pembina</p>
-                    <p>NIP. <span>19730416 199901 2 002</span></p>
+                    <p>NIP. <span>(value)</span></p>
                 </div>
             </div>
             <div id="tembusan" class="flex flex-col ml-10">
