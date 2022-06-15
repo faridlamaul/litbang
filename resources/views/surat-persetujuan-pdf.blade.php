@@ -9,7 +9,9 @@
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" /> --}}
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
-    <link rel="stylesheet" href="{{ ltrim(asset('css/app.css'), '/') }}" type="text/css">
+    {{-- load css/app.css --}}
+    <link rel="stylesheet" href="{{ public_path('css/app.css') }}" media="all" type="text/css">
+    {{-- <link rel="stylesheet" href="{{ ltrim(asset('css/app.css'), '/') }}" media="all" type="text/css"> --}}
 
     <style>
         #surat_body {
@@ -18,12 +20,11 @@
 
         #surat_body p {
             margin-bottom: 10px;
-            font-size: 1.5rem;
+            font-size: 1rem;
             /* 24px */
             line-height: 2rem;
             /* 32px */
         }
-
     </style>
 
 </head>
@@ -35,8 +36,10 @@
             <div class="flex flex-col w-full text-center">
                 <h1 class="uppercase font-bold text-4xl">Pemerintah Kabupaten gresik</h1>
                 <h1 class="uppercase font-bold text-4xl">Badan Perencanaan Pembangunan, Penelitian, dan Pengembangan</h1>
-                <p class="uppercase font-medium text-xl">Jl. Dr. Wahidin Sudirohusodo No. 245 Telp. 3952825 - 30 psw. 209, 3952812</p>
-                <p class="uppercase font-medium text-xl">Website : http://bappeda.gresik.go.id email : bappeda@gresikkab.go.id</p>
+                <p class="uppercase font-medium text-xl">Jl. Dr. Wahidin Sudirohusodo No. 245 Telp. 3952825 - 30 psw.
+                    209, 3952812</p>
+                <p class="uppercase font-medium text-xl">Website : http://bappeda.gresik.go.id email :
+                    bappeda@gresikkab.go.id</p>
                 <h3 class="uppercase font-semibold text-3xl tracking-widest"><u>Gresik</u></h3>
             </div>
         </div>
@@ -53,7 +56,8 @@
                     <p>Gresik, <span>{{ $permohonan->created_at }}</span></p>
                     <div class="flex flex-row">
                         <p>Kepada <br> Yth</p>
-                        <p class="text-2xl m-5">Kepala Departemen Fakultas Teknologi Kelautan Universitas Negeri Surabaya</p>
+                        <p class="text-2xl m-5">Kepala Departemen Fakultas Teknologi Kelautan Universitas Negeri
+                            Surabaya</p>
                     </div>
                 </div>
             </div>
@@ -61,17 +65,21 @@
                 <p>Dasar</p>
                 <div class="flex flex-row">
                     <p class="mr-8">1.</p>
-                    <p>Peraturan Daerah Kabupaten Gresik Nomor 12 Tahun 2016 tentang Pembentukan Perangkat Daerah Kabupaten Gresik</p>
+                    <p>Peraturan Daerah Kabupaten Gresik Nomor 12 Tahun 2016 tentang Pembentukan Perangkat Daerah
+                        Kabupaten Gresik</p>
                 </div>
                 <div class="flex flex-row">
                     <p class="mr-8">2.</p>
-                    <p>Peraturan Bupati Gresik Nomor 38 Tahun 2019 tentang Kedudukan, Susunan Organisasi, Tugas, Fungsi dan Tata Kerja Badan Perencanaan Pembangunan, Penelitian dan Pengembangan Kabupaten Gresik</p>
+                    <p>Peraturan Bupati Gresik Nomor 38 Tahun 2019 tentang Kedudukan, Susunan Organisasi, Tugas, Fungsi
+                        dan Tata Kerja Badan Perencanaan Pembangunan, Penelitian dan Pengembangan Kabupaten Gresik</p>
                 </div>
                 <div class="flex flex-row">
                     <p class="mr-8">3.</p>
-                    <p>Surat dari Kepala Departemen Fakultas Teknologi Kelautan Universitas Negeri Surabaya Nomor: 1945/IT2.IX.4.1.4/B/TU.00.09/2022 tanggal 07 April 2022 Perihal Permohonan Ijin Penelitian</p>
+                    <p>Surat dari Kepala Departemen Fakultas Teknologi Kelautan Universitas Negeri Surabaya Nomor:
+                        1945/IT2.IX.4.1.4/B/TU.00.09/2022 tanggal 07 April 2022 Perihal Permohonan Ijin Penelitian</p>
                 </div>
-                <p>&emsp;Maka dengan ini Badan Perencanaan Pembangunan, Penelitian dan Pengembangan Kabupaten Gresik menyatakan tidak keberatan atas dilakukannya kegiatan yang dilakukan oleh</p>
+                <p>&emsp;Maka dengan ini Badan Perencanaan Pembangunan, Penelitian dan Pengembangan Kabupaten Gresik
+                    menyatakan tidak keberatan atas dilakukannya kegiatan yang dilakukan oleh</p>
                 <div class="flex flex-row">
                     <p class="mx-8">1.</p>
                     <p class="w-1/4">Nama</p>
@@ -114,28 +122,36 @@
                 </div> --}}
             </div>
             <div id="perhatikan" class="flex flex-col mt-10">
-                <p>Dalam melakukan kegiatan Penelitian/Survey/Riset/KKN/PKL agar memperhatikan hal-hal sebagai berikut :</p>
+                <p>Dalam melakukan kegiatan Penelitian/Survey/Riset/KKN/PKL agar memperhatikan hal-hal sebagai berikut :
+                </p>
                 <div class="flex flex-row">
                     <p class="mr-8">1.</p>
-                    <p>Sebelum dan setelah dilaksanakannya Penelitian/Survey/Riset/KKN/PKL diwajibkan melapor kepada Instansi terkait;</p>
+                    <p>Sebelum dan setelah dilaksanakannya Penelitian/Survey/Riset/KKN/PKL diwajibkan melapor kepada
+                        Instansi terkait;</p>
                 </div>
                 <div class="flex flex-row">
                     <p class="mr-8">2.</p>
-                    <p>Tidak diperkenankan melaksanakan kegiatan lain diluar kegiatan Penelitian/ Survey/ Riset/ KKN /PKL yang dilakukan;</p>
+                    <p>Tidak diperkenankan melaksanakan kegiatan lain diluar kegiatan Penelitian/ Survey/ Riset/ KKN
+                        /PKL yang dilakukan;</p>
                 </div>
                 <div class="flex flex-row">
                     <p class="mr-8">3.</p>
-                    <p>Setelah melakukan Penelitian/Survey/Riset/KKN/PKL selambat - lambatnya 1 (satu) bulan agar menyerahkan 1 (satu) ex. / buku hasil Penelitian/Survey/Riset/KKN/PKL kepada Bupati Gresik melalui Badan Perencanaan Pembangunan, Penelitian dan Pengembangan Kabupaten Gresik;</p>
+                    <p>Setelah melakukan Penelitian/Survey/Riset/KKN/PKL selambat - lambatnya 1 (satu) bulan agar
+                        menyerahkan 1 (satu) ex. / buku hasil Penelitian/Survey/Riset/KKN/PKL kepada Bupati Gresik
+                        melalui Badan Perencanaan Pembangunan, Penelitian dan Pengembangan Kabupaten Gresik;</p>
                 </div>
                 <div class="flex flex-row">
                     <p class="mr-8">4.</p>
                     <p>Dalam pelaksanaan wajib mematuhi Protokol Kesehatan sesuai dengan Peraturan yang berlaku.</p>
                 </div>
-                <p>&emsp;Demikian rekomendasi ijin Penelitian/Survey/Riset/KKN/PKL ini dibuat, untuk dapat dipergunakan seperlunya.</p>
+                <p>&emsp;Demikian rekomendasi ijin Penelitian/Survey/Riset/KKN/PKL ini dibuat, untuk dapat dipergunakan
+                    seperlunya.</p>
             </div>
             <div id="admin" class="flex flex-col mt-5">
                 <div class="w-1/2 ml-auto text-center">
-                    <p class="text-2xl font-bold">An.KEPALA BADAN PERENCANAAN PEMBANGUNAN, PENELITIAN DAN PENGEMBANGAN <br> KABUPATEN GRESIK</p>
+                    <p class="text-2xl font-bold">An.KEPALA BADAN PERENCANAAN PEMBANGUNAN, PENELITIAN DAN PENGEMBANGAN
+                        <br> KABUPATEN GRESIK
+                    </p>
                     <p class="font-bold">Kabid. Penelitian dan Pengembangan</p>
                     <div class="text-center my-5" style="text-align: -webkit-center;">
                         <img src="data:image/png;base64, {{ $qrcode }}" alt="">

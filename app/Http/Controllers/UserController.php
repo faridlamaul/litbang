@@ -103,15 +103,18 @@ class UserController extends Controller
 
     public function generatePDF(Request $request)
     {
-        $permohonan = Permohonan::find($request->id)
-            ->join('riwayats', 'riwayats.id', '=', 'permohonans.riwayat_id')
-            ->join('surats', 'surats.id', '=', 'permohonans.surat_id')
-            ->select('permohonans.*', 'riwayats.*', 'surats.*')
-            ->first();
+        $permohonan = Permohonan::find($request->id);
+        // $permohonan = Permohonan::find($request->id)
+        //     ->join('riwayats', 'riwayats.id', '=', 'permohonans.riwayat_id')
+        //     ->join('surats', 'surats.id', '=', 'permohonans.surat_id')
+        //     ->select('permohonans.*', 'riwayats.*', 'surats.*')
+        //     ->get();
 
-        $qrcode = base64_encode(QrCode::format('svg')->size(100)->errorCorrection('H')->generate($permohonan['qrcode']));
+        // dd($permohonan->toArray());
+        // $qrcode = base64_encode(QrCode::format('svg')->size(100)->errorCorrection('H')->generate($permohonan['qrcode']));
+        $qrcode = base64_encode(QrCode::format('svg')->size(100)->errorCorrection('H')->generate("https://me-qr.com/lG9caw"));
 
-        $pdf = PDF::loadView('surat-persetujuan-pdf', compact('permohonan', 'qrcode'))->setOptions(['defaultFont' => 'Times New Roman', 'Times', 'serif']);;
+        $pdf = PDF::loadView('surat-persetujuan-pdf', compact('permohonan', 'qrcode'));
 
         // display pdf in browser
         return $pdf->stream('Surat-' . $permohonan['tanggal_permohonan'] . '-' . $permohonan['name'] . '.' . 'pdf');
