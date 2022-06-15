@@ -25,25 +25,27 @@
             line-height: 2rem;
             /* 32px */
         }
+
     </style>
 
 </head>
 
 <body>
-    <div class="container mx-auto my-10 py-10">
+    <div class="container mx-auto">
         <div class="flex flex-row">
-            <img src="data:image/png;base64, {{ asset('pdf_assets/logo.png') }}" alt="">
-            <div class="flex flex-col w-full text-center">
-                <h1 class="uppercase font-bold text-4xl">Pemerintah Kabupaten gresik</h1>
-                <h1 class="uppercase font-bold text-4xl">Badan Perencanaan Pembangunan, Penelitian, dan Pengembangan</h1>
-                <p class="uppercase font-medium text-xl">Jl. Dr. Wahidin Sudirohusodo No. 245 Telp. 3952825 - 30 psw.
+            {{-- {{ dd($surat->toArray()) }} --}}
+            <img src="{{ public_path('pdf_assets/logo.png') }}" class="float-left relative" style="width: 16%;" alt="">
+            <div class="flex flex-col w-full text-center float-right relative" style="width: 90%">
+                <h1 class="uppercase font-bold text-md">Pemerintah Kabupaten gresik</h1>
+                <h1 class="uppercase font-bold text-md">Badan Perencanaan Pembangunan, Penelitian, dan Pengembangan</h1>
+                <p class="uppercase font-medium text-xs">Jl. Dr. Wahidin Sudirohusodo No. 245 Telp. 3952825 - 30 psw.
                     209, 3952812</p>
-                <p class="uppercase font-medium text-xl">Website : http://bappeda.gresik.go.id email :
+                <p class="uppercase font-medium text-xs">Website : http://bappeda.gresik.go.id email :
                     bappeda@gresikkab.go.id</p>
-                <h3 class="uppercase font-semibold text-3xl tracking-widest"><u>Gresik</u></h3>
+                <h3 class="uppercase font-semibold text-md tracking-widest"><u>Gresik</u></h3>
             </div>
         </div>
-        <hr class="border-2 border-black my-6 mx-5">
+        <hr class="border-2 border-black my-6 mx-5 mt-36">
         <div id="surat_body" class="flex flex-col">
             <div id="duwuran" class="flex flex-row w-full">
                 <div class="flex flex-col w-1/2">
@@ -83,7 +85,7 @@
                 <div class="flex flex-row">
                     <p class="mx-8">1.</p>
                     <p class="w-1/4">Nama</p>
-                    <p>:&emsp;&emsp;{{ $permohonan->name }}</p>
+                    <p>:&emsp;&emsp;{{ $user->name }}</p>
                 </div>
                 {{-- <div class="flex flex-row">
                     <p class="mx-8">2.</p>
@@ -93,17 +95,17 @@
                 <div class="flex flex-row">
                     <p class="mx-8">3.</p>
                     <p class="w-1/4">Asal Sekolah</p>
-                    <p>:&emsp;&emsp;{{ $permohonan->asal_sekolah }}</p>
+                    <p>:&emsp;&emsp;{{ $riwayat->asal_sekolah }}</p>
                 </div>
                 <div class="flex flex-row">
                     <p class="mx-8">4.</p>
                     <p class="w-1/4">Alamat</p>
-                    <p>:&emsp;&emsp;{{ $permohonan->alamat }}</p>
+                    <p>:&emsp;&emsp;{{ $riwayat->alamat }}</p>
                 </div>
                 <div class="flex flex-row">
                     <p class="mx-8">5.</p>
                     <p class="w-1/4">Keperluan dilakukannya Penelitian/Survey/Riset/KKN/PKL</p>
-                    <p>:&emsp;&emsp;Untuk mnegajukan {{ $permohonan->title }}</p>
+                    <p>:&emsp;&emsp;Untuk mengajukan {{ $surat->title }}</p>
                 </div>
                 {{-- <div class="flex flex-row">
                     <p class="mx-8">6.</p>

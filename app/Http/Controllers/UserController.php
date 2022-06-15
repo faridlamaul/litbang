@@ -104,17 +104,25 @@ class UserController extends Controller
     public function generatePDF(Request $request)
     {
         $permohonan = Permohonan::find($request->id);
+        $user = Auth::user();
+        $riwayat = Riwayat::find($permohonan->riwayat_id);
+        $surat = Surat::find($permohonan->surat_id);
         // $permohonan = Permohonan::find($request->id)
         //     ->join('riwayats', 'riwayats.id', '=', 'permohonans.riwayat_id')
         //     ->join('surats', 'surats.id', '=', 'permohonans.surat_id')
         //     ->select('permohonans.*', 'riwayats.*', 'surats.*')
         //     ->get();
 
+
+
         // dd($permohonan->toArray());
         // $qrcode = base64_encode(QrCode::format('svg')->size(100)->errorCorrection('H')->generate($permohonan['qrcode']));
+
+        $logo = public_path('pdf_assets/logo.png');
+
         $qrcode = base64_encode(QrCode::format('svg')->size(100)->errorCorrection('H')->generate("https://me-qr.com/lG9caw"));
 
-        $pdf = PDF::loadView('surat-persetujuan-pdf', compact('permohonan', 'qrcode'));
+        $pdf = PDF::loadView('surat-persetujuan-pdf', compact('permohonan', 'qrcode', 'logo', 'user', 'riwayat', 'surat'));
 
         // display pdf in browser
         return $pdf->stream('Surat-' . $permohonan['tanggal_permohonan'] . '-' . $permohonan['name'] . '.' . 'pdf');
