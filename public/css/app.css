@@ -945,9 +945,6 @@ input[type="range"]::-ms-fill-lower {
 .z-10 {
   z-index: 10;
 }
-.col-span-2 {
-  grid-column: span 2 / span 2;
-}
 .float-right {
   float: right;
 }
@@ -1090,6 +1087,9 @@ input[type="range"]::-ms-fill-lower {
 .mr-1 {
   margin-right: 0.25rem;
 }
+.mt-36 {
+  margin-top: 9rem;
+}
 .mb-16 {
   margin-bottom: 4rem;
 }
@@ -1099,17 +1099,11 @@ input[type="range"]::-ms-fill-lower {
 .-mr-2 {
   margin-right: -0.5rem;
 }
-.mt-80 {
-  margin-top: 20rem;
+.ml-20 {
+  margin-left: 5rem;
 }
-.mt-60 {
-  margin-top: 15rem;
-}
-.mt-40 {
-  margin-top: 10rem;
-}
-.mt-36 {
-  margin-top: 9rem;
+.ml-8 {
+  margin-left: 2rem;
 }
 .box-content {
   box-sizing: content-box;
@@ -1128,6 +1122,12 @@ input[type="range"]::-ms-fill-lower {
 }
 .table {
   display: table;
+}
+.table-cell {
+  display: table-cell;
+}
+.table-row {
+  display: table-row;
 }
 .grid {
   display: grid;
@@ -1162,8 +1162,10 @@ input[type="range"]::-ms-fill-lower {
 .h-10 {
   height: 2.5rem;
 }
-.h-2\/4 {
-  height: 50%;
+.h-max {
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
 }
 .max-h-24 {
   max-height: 6rem;
@@ -1221,9 +1223,6 @@ input[type="range"]::-ms-fill-lower {
 }
 .w-48 {
   width: 12rem;
-}
-.w-1\/3 {
-  width: 33.333333%;
 }
 .max-w-md {
   max-width: 28rem;
@@ -1293,9 +1292,6 @@ input[type="range"]::-ms-fill-lower {
 }
 .grid-cols-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-.grid-cols-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 .flex-row {
   flex-direction: row;
@@ -1675,6 +1671,10 @@ input[type="range"]::-ms-fill-lower {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
 .pl-3 {
   padding-left: 0.75rem;
 }
@@ -1726,11 +1726,17 @@ input[type="range"]::-ms-fill-lower {
 .pb-1 {
   padding-bottom: 0.25rem;
 }
-.pt-80 {
-  padding-top: 20rem;
+.pr-8 {
+  padding-right: 2rem;
+}
+.pr-3 {
+  padding-right: 0.75rem;
 }
 .text-center {
   text-align: center;
+}
+.text-justify {
+  text-align: justify;
 }
 .font-sans {
   font-family: Nunito, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
