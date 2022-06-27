@@ -73,7 +73,7 @@ class AdminController extends Controller
             $permohonans->ttd = "$ttdName";
         }
 
-        // AES Encrypt
+        // AES Encrypt TTD
         $AESEncrypt = Crypt::encryptString($imageToString);
 
         $permohonans->qrcode = $AESEncrypt;
