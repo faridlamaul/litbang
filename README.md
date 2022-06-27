@@ -1,6 +1,6 @@
 ## Litbang Web Application
 
-Web application for submitting letters with AES encryption in the form of QR Code
+Web application for submitting letters with AES encryption in the form of QR Code. Developing using [Laravel 9](https://laravel.com/) Framework
 
 ### Installation
 
