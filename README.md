@@ -13,18 +13,22 @@ Web application for submitting letters with AES encryption in the form of QR Cod
     ```
     cp .env.example .env
     ```
+-   Run this command to install mysql image
+    ```
+    php artisan sail:install
+    select->0 or mysql
+    ``` 
+-    Run sail with the following command
+    ```
+    ./vendor/bin/sail up -d
+    ```
 -   Generate key to .env file
     ```
-    php artisan key:generate
+    ./vendor/bin/sail artisan key:generate
     ```
--   Set the database on the .env file according to the database on the local computer
 -   Migrate database
     ```
-    php artisan migrate:fresh --seed
-    ```
--   Run server
-    ```
-    php artisan serve
+    ./vendor/bin/sail artisan migrate:fresh --seed
     ```
 
 ### Team
