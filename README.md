@@ -21,7 +21,7 @@ Web application for submitting letters with AES encryption in the form of QR Cod
 -   Run sail with the following command
     ```
     ./vendor/bin/sail up -d
-    ```
+    ``` 
 -   Generate key to .env file
     ```
     ./vendor/bin/sail artisan key:generate
