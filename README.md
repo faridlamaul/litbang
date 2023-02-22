@@ -18,7 +18,7 @@ Web application for submitting letters with AES encryption in the form of QR Cod
     php artisan sail:install
     select->0 or mysql
     ``` 
--    Run sail with the following command
+-   Run sail with the following command
     ```
     ./vendor/bin/sail up -d
     ```
